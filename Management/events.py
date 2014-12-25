@@ -19,6 +19,12 @@ class Message(Event):
         self.name = "Message_Event"
         self.message = message
         
+class Keydown(Event):
+    """Created when a key is pushed, with the number of that key."""
+    def __init__(self, key):
+        self.name = "Keydown_Event"
+        self.key = key
+        
 class Stop(Event):
     """A Stop event is created to signal the stoppage of the program."""
     def __init__(self):

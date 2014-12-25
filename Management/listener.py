@@ -1,4 +1,4 @@
-from events import Event, Tick, Stop, Message
+from events import Event, Tick, Stop, Message, Keydown
 
 class Listener(object):
     
@@ -14,6 +14,9 @@ must overrde __init__ method.")
     def getEvent(self, event):
         if not isinstance(event, Event):
             raise Exception("getEvent only accepts Event objects")
+        elif not isinstance(event, Tick):
+            if "printDebug" in dir(self):
+                self.printDebug(event)
             
         if isinstance(event, Tick): # Check if the event is a tick event
             if "tick" in dir(self): # check if the listener has a tick method
@@ -21,6 +24,10 @@ must overrde __init__ method.")
         elif isinstance(event, Stop):
             if "stop" in dir(self):
                 self.stop()
+        elif isinstance(event, Keydown):
+            if "keydown" in dir(self):
+                self.keydown(event.key)
+
         # Debug events
         elif isinstance(event, Message):
             if "printMessage" in dir(self):

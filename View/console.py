@@ -10,14 +10,13 @@ class Console(Listener):
     def __init__(self, manager):
         self.manager = manager
         self.manager.register(self)
-        self.ticks = 0
     
     def printMessage(self, message):
         """Print given message to the console."""
         print message
+
+    def printDebug(self, eventName):
+        print eventName
         
-    def tick(self):
-        self.ticks += 1
-        print "tick... #" + str(self.ticks)
-        if self.ticks >= 10:
-            self.manager.queueEvent( Stop() )
+    def keydown(self, key):
+        print "key:", str(key)
