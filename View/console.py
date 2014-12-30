@@ -1,4 +1,3 @@
-from Management.events import Stop
 from Management.listener import Listener
 
 class Console(Listener):
@@ -11,12 +10,12 @@ class Console(Listener):
         self.manager = manager
         self.manager.register(self)
     
-    def printMessage(self, message):
+    def message(self, message):
         """Print given message to the console."""
         print message
 
-    def printDebug(self, eventName):
-        print eventName
+    def debug(self, event):
+        print event
         
     def keydown(self, key):
         print "key:", str(key)

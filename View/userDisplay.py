@@ -9,4 +9,4 @@ class UserDisplay(Listener):
     def __init__(self, manager):
         self.manager = manager
         pygame.init()
-        pygame.display.set_mode((800,600))
+        pygame.display.set_mode((800,600), )#pygame.FULLSCREEN)
